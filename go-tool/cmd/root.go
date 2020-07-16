@@ -46,6 +46,7 @@ func Execute() {
 func init() {
 	cobra.OnInitialize(initConfig)
 	rootCmd.AddCommand(wordCmd)
+	rootCmd.AddCommand(qrcodeCmd)
 }
 
 // initConfig reads in config file and ENV variables if set.
