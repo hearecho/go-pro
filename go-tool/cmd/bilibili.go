@@ -23,7 +23,8 @@ var bilibiliCmd = &cobra.Command{
 		switch mode {
 		case ModeUserInfo:
 			u = utils.GetUserInfo(mid)
-			fmt.Println(u)
+			fmt.Println("|用户名 |用户ID |投稿数 |播放数 |点赞数 |关注数 |粉丝数 |")
+			fmt.Printf("|%-7s|%-7s|%-7.0f|%-7s|%-7s|%-7.0f|%-7.0f|\n",u.Name,u.Mid,u.VideoNum,u.PlayNum,u.Likes,u.Following,u.Follower)
 		default:
 
 		}
