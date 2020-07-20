@@ -11,7 +11,7 @@ const (
 	ModeVideoInfo
 )
 var bilidesc = ""
-var mid string
+var name string
 
 
 var bilibiliCmd = &cobra.Command{
@@ -19,12 +19,12 @@ var bilibiliCmd = &cobra.Command{
 	Short:"查询bilibili相关信息",
 	Long:bilidesc,
 	Run: func(cmd *cobra.Command, args []string) {
-		var u utils.UserInfo
 		switch mode {
 		case ModeUserInfo:
-			u = utils.GetUserInfo(mid)
-			fmt.Println("|用户名 |用户ID |投稿数 |播放数 |点赞数 |关注数 |粉丝数 |")
-			fmt.Printf("|%-7s|%-7s|%-7.0f|%-7s|%-7s|%-7.0f|%-7.0f|\n",u.Name,u.Mid,u.VideoNum,u.PlayNum,u.Likes,u.Following,u.Follower)
+			users := utils.GetUserInfo(name)
+			for _,v := range users {
+				fmt.Printf("|%-20s|%-15s|%-6.0f|%-15.0f|%-2.0f|%-4s|%-4s|\n",v.Name,v.Mid,v.VideoNum,v.Fans,v.Level,v.PlayNum,v.Likes)
+			}
 		default:
 
 		}
@@ -32,7 +32,7 @@ var bilibiliCmd = &cobra.Command{
 }
 
 func init()  {
-	bilibiliCmd.Flags().StringVarP(&mid,"mid","","6089090","用户mid号")
-	bilibiliCmd.MarkFlagRequired("mid")
+	bilibiliCmd.Flags().StringVarP(&name,"name","n","bilibili","用户名称")
+	bilibiliCmd.MarkFlagRequired("name")
 }
 
