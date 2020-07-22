@@ -2,14 +2,20 @@ package main
 
 import (
 	"fmt"
-	"github.com/spf13/viper"
+	"github.com/hearecho/go-pro/go-web/pkg/setting"
+	"github.com/hearecho/go-pro/go-web/routers"
+	"net/http"
 )
+
 func main() {
-	viper.SetConfigName("config")
-	viper.AddConfigPath("conf/")
-	err := viper.ReadInConfig()
-	if err != nil {
-		panic(fmt.Errorf("Fatal error config file: %s \n", err))
+	router := routers.InitRouter()
+	s := &http.Server{
+		Addr:           fmt.Sprintf(":%d", setting.HttpPort),
+		Handler:        router,
+		ReadTimeout:    setting.ReadTimeOut,
+		WriteTimeout:   setting.WriteTimeOut,
+		MaxHeaderBytes: 1 << 20,
 	}
-	fmt.Println(viper.GetDuration("server.readTimeOut"))
+	s.ListenAndServe()
 }
+
