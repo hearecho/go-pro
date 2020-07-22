@@ -32,11 +32,11 @@ func LoadBase()  {
 }
 func LoadServer()  {
 	HttpPort = viper.GetInt("server.port")
-	ReadTimeOut = viper.GetDuration("readTimeOut")*time.Second
-	WriteTimeOut = viper.GetDuration("writeTimeOut")*time.Second
+	ReadTimeOut = viper.GetDuration("server.readTimeOut")*time.Second
+	WriteTimeOut = viper.GetDuration("server.writeTimeOut")*time.Second
 }
 
 func LoadApp()  {
-	JwtSecret = viper.GetString("secret")
-	PageSize = viper.GetInt("pageSize")
+	JwtSecret = viper.GetString("app.secret")
+	PageSize = viper.GetInt("app.pageSize")
 }

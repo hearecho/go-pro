@@ -11,4 +11,5 @@ func main() {
 	if err != nil {
 		panic(fmt.Errorf("Fatal error config file: %s \n", err))
 	}
+	fmt.Println(viper.GetDuration("server.readTimeOut"))
 }
