@@ -36,3 +36,8 @@ func (r R) SetPath(path string) R {
 	r.Path = path
 	return r
 }
+
+func (r R)SetCode(code int) R  {
+	r.Code = code
+	return r
+}
