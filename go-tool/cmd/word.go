@@ -1,8 +1,8 @@
 package cmd
 
 import (
+	"github.com/hearecho/go-pro/go-tool/utils"
 	"github.com/spf13/cobra"
-	"go-tool/utils"
 	"log"
 	"strings"
 )

@@ -15,8 +15,7 @@ limitations under the License.
 */
 package main
 
-import "go-tool/cmd"
-
+import "github.com/hearecho/go-pro/go-tool/cmd"
 
 func main() {
 	cmd.Execute()
