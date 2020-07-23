@@ -1,4 +1,4 @@
-module go-tool
+module github.com/hearecho/go-pro/go-tool
 
 go 1.14
 

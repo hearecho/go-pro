@@ -49,7 +49,7 @@
     <property name="configurable.Project.GOPATH.is.expanded" value="false" />
     <property name="go.import.settings.migrated" value="true" />
     <property name="go.tried.to.enable.integration.vgo.integrator" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/utils" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../go-web" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
@@ -87,8 +87,8 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Go Build.go build main.go" />
         <item itemvalue="Go Build.go build go-tool/test" />
+        <item itemvalue="Go Build.go build main.go" />
         <item itemvalue="Go Build.go build go-tool/test" />
         <item itemvalue="Go Build.go build main.go" />
       </list>
@@ -143,22 +143,26 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="92" y="92" width="1736" height="856" key="DiffContextDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1594955852494" />
-    <state width="1877" height="280" key="GridCell.Tab.0.bottom" timestamp="1595248011848">
+    <state x="740" y="275" key="FileChooserDialogImpl" timestamp="1595320464532">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="280" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1595248011848" />
-    <state width="1877" height="280" key="GridCell.Tab.0.center" timestamp="1595248011848">
+    <state x="740" y="275" key="FileChooserDialogImpl/0.0.1920.1040@0.0.1920.1040" timestamp="1595320464532" />
+    <state width="1877" height="280" key="GridCell.Tab.0.bottom" timestamp="1595320468002">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="280" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1595248011848" />
-    <state width="1877" height="280" key="GridCell.Tab.0.left" timestamp="1595248011848">
+    <state width="1877" height="280" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1595320468002" />
+    <state width="1877" height="280" key="GridCell.Tab.0.center" timestamp="1595320468002">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="280" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1595248011848" />
-    <state width="1877" height="280" key="GridCell.Tab.0.right" timestamp="1595248011848">
+    <state width="1877" height="280" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1595320468002" />
+    <state width="1877" height="280" key="GridCell.Tab.0.left" timestamp="1595320468001">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="280" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1595248011848" />
+    <state width="1877" height="280" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1595320468001" />
+    <state width="1877" height="280" key="GridCell.Tab.0.right" timestamp="1595320468002">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1877" height="280" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1595320468002" />
     <state width="1877" height="348" key="GridCell.Tab.1.bottom" timestamp="1594993060021">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
