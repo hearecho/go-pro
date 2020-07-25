@@ -2,10 +2,10 @@ package utils
 
 import (
 	"fmt"
+	"github.com/hearecho/go-pro/go-web/pkg/logging"
 	"github.com/jinzhu/gorm"
 	_ "github.com/jinzhu/gorm/dialects/mysql"
 	"github.com/spf13/viper"
-	"log"
 )
 
 var DB *gorm.DB
@@ -34,7 +34,7 @@ func init() {
 		host,
 		dbName))
 	if err != nil {
-		log.Panicln(err)
+		logging.Error(err.Error())
 	}
 	gorm.DefaultTableNameHandler = func(db *gorm.DB, defaultTableName string) string {
 		return tablePrefix + defaultTableName

@@ -4,9 +4,9 @@ import (
 	"github.com/astaxie/beego/validation"
 	"github.com/gin-gonic/gin"
 	"github.com/hearecho/go-pro/go-web/models"
+	"github.com/hearecho/go-pro/go-web/pkg/logging"
 	"github.com/hearecho/go-pro/go-web/pkg/resp"
 	"github.com/hearecho/go-pro/go-web/pkg/utils"
-	"log"
 )
 
 type auth struct {
@@ -38,7 +38,7 @@ func GetAuth(c *gin.Context)  {
 		}
 	} else {
 		for _, err := range valid.Errors {
-			log.Println(err.Key, err.Message)
+			logging.Error(err.Key,err.Message)
 		}
 	}
 	c.JSON(200, r)

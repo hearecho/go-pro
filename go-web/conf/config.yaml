@@ -17,4 +17,7 @@ database:
   name: "web"
   tablePrefix: "blog_"
 
+runtime:
+  logSavePath: "runtime/logs/"
+
 
