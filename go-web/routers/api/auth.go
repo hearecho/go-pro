@@ -29,12 +29,12 @@ func GetAuth(c *gin.Context)  {
 		if isExit {
 			token,err := utils.GenerateToken(username,password)
 			if err != nil {
-				r = r.SetCode(resp.ERROR_AUTH_TOKEN).SetMsg(resp.MsgFlags[resp.ERROR_AUTH_TOKEN])
+				r = r.SetStatus(resp.ERROR_AUTH_TOKEN)
 			} else {
 				data["token"] = token
 			}
 		} else {
-			r = r.SetCode(resp.ERROR_AUTH).SetMsg(resp.MsgFlags[resp.ERROR_AUTH])
+			r = r.SetStatus(resp.ERROR_AUTH)
 		}
 	} else {
 		for _, err := range valid.Errors {

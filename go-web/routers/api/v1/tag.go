@@ -62,7 +62,7 @@ func AddTag(c *gin.Context) {
 			r = r.Ok()
 			models.AddTag(name, state, createdBy)
 		} else {
-			r = r.SetCode(resp.ERROR_EXIST_TAG).SetMsg(resp.MsgFlags[resp.ERROR_EXIST_TAG])
+			r = r.SetStatus(resp.ERROR_EXIST_TAG)
 		}
 	}
 	c.JSON(200, r)
@@ -108,7 +108,7 @@ func EditTag(c *gin.Context) {
 			}
 			models.EditTag(id, data)
 		} else {
-			r = r.SetCode(resp.ERROR_NOT_EXIST_TAG).SetMsg(resp.MsgFlags[resp.ERROR_NOT_EXIST_TAG])
+			r = r.SetStatus(resp.ERROR_NOT_EXIST_TAG)
 		}
 	}
 	c.JSON(200, r)
@@ -130,7 +130,7 @@ func DeleteTag(c *gin.Context) {
 		if models.ExitTagByID(id) {
 			models.DeleteTag(id)
 		} else {
-			r = r.SetCode(resp.ERROR_NOT_EXIST_TAG).SetMsg(resp.MsgFlags[resp.ERROR_NOT_EXIST_TAG])
+			r = r.SetStatus(resp.ERROR_NOT_EXIST_TAG)
 		}
 	}
 	c.JSON(200, r)

@@ -27,8 +27,9 @@ func (r R) SetData(data interface{}) R {
 	return r
 }
 
-func (r R) SetMsg(msg string) R {
-	r.Msg = msg
+func (r R) SetStatus(code int) R {
+	r.Code = code
+	r.Msg = MsgFlags[code]
 	return r
 }
 
@@ -37,7 +38,3 @@ func (r R) SetPath(path string) R {
 	return r
 }
 
-func (r R)SetCode(code int) R  {
-	r.Code = code
-	return r
-}
