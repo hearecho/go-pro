@@ -1,18 +1,20 @@
-package models
+package utils
 
 import (
 	"fmt"
+	"github.com/hearecho/go-pro/go-web/pkg/logging"
 	"github.com/jinzhu/gorm"
+	_ "github.com/jinzhu/gorm/dialects/mysql"
 	"github.com/spf13/viper"
-	"log"
 )
 
-var db *gorm.DB
+var DB *gorm.DB
 
 type Model struct {
 	ID         int `gorm:"primary_key" json:"id"`
 	CreatedOn  int `json:"created_on"`
 	ModifiedOn int `json:"modified_on"`
+	DeletedOn  int `json:"deteled_on"`
 }
 
 func init() {
@@ -26,23 +28,23 @@ func init() {
 	password = viper.GetString("database.pwd")
 	host = viper.GetString("database.url")
 	tablePrefix = viper.GetString("database.tablePrefix")
-	db, err = gorm.Open(dbType, fmt.Sprintf("%s:%s@tcp(%s)/%s?charset=utf8&parseTime=True&loc=Local",
+	DB, err = gorm.Open(dbType, fmt.Sprintf("%s:%s@tcp(%s)/%s?charset=utf8&parseTime=True&loc=Local",
 		user,
 		password,
 		host,
 		dbName))
 	if err != nil {
-		log.Panicln(err)
+		logging.Error(err.Error())
 	}
 	gorm.DefaultTableNameHandler = func(db *gorm.DB, defaultTableName string) string {
 		return tablePrefix + defaultTableName
 	}
-	db.SingularTable(true)
-	db.LogMode(true)
-	db.DB().SetMaxIdleConns(10)
-	db.DB().SetMaxOpenConns(100)
+	DB.SingularTable(true)
+	DB.LogMode(true)
+	DB.DB().SetMaxIdleConns(10)
+	DB.DB().SetMaxOpenConns(100)
 }
 
-func CloseDB()  {
-	defer db.Close()
+func CloseDB() {
+	defer DB.Close()
 }
