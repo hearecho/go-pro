@@ -3,9 +3,9 @@ package utils
 import (
 	"fmt"
 	"github.com/hearecho/go-pro/go-web/pkg/logging"
+	"github.com/hearecho/go-pro/go-web/pkg/setting"
 	"github.com/jinzhu/gorm"
 	_ "github.com/jinzhu/gorm/dialects/mysql"
-	"github.com/spf13/viper"
 	"time"
 )
 
@@ -23,12 +23,12 @@ func init() {
 		err                                               error
 		dbType, dbName, user, password, host, tablePrefix string
 	)
-	dbType = viper.GetString("database.type")
-	dbName = viper.GetString("database.name")
-	user = viper.GetString("database.user")
-	password = viper.GetString("database.pwd")
-	host = viper.GetString("database.url")
-	tablePrefix = viper.GetString("database.tablePrefix")
+	dbType = setting.DBSetting.Type
+	dbName = setting.DBSetting.Name
+	user = setting.DBSetting.User
+	password = setting.DBSetting.Pwd
+	host = setting.DBSetting.Url
+	tablePrefix = setting.DBSetting.TablePrefix
 	DB, err = gorm.Open(dbType, fmt.Sprintf("%s:%s@tcp(%s)/%s?charset=utf8&parseTime=True&loc=Local",
 		user,
 		password,
