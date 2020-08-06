@@ -33,7 +33,7 @@ func GetImagePath() string {
 	return setting.AppSetting.Image.SavePath
 }
 
-func GetImageFullPath(fileName string) string {
+func GetImageFullPath() string {
 	return setting.AppSetting.RuntimeRootPath + GetImagePath()
 }
 
