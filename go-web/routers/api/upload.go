@@ -41,5 +41,5 @@ func UploadImage(c *gin.Context) {
 			}
 		}
 	}
-	c.JSON(http.StatusOK,r)
+	c.JSON(http.StatusOK,r.SetData(data))
 }

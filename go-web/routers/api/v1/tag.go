@@ -10,6 +10,7 @@ import (
 	"github.com/hearecho/go-pro/go-web/pkg/utils"
 	"github.com/hearecho/go-pro/go-web/pkg/web"
 	"github.com/unknwon/com"
+	"net/http"
 )
 
 // @Summary 获取全部标签
@@ -35,7 +36,7 @@ func GetTags(c *gin.Context) {
 	maps["deleted_on"] = 0
 	data["lists"] = models.GetTags(utils.GetPage(c), setting.AppSetting.PageSize, maps)
 	data["total"] = models.GetTagTotal(maps)
-	c.JSON(200, resp.R{}.Ok().SetPath(c.Request.URL.Path).SetData(data))
+	c.JSON(http.StatusOK, resp.R{}.Ok().SetPath(c.Request.URL.Path).SetData(data))
 }
 
 type AddTagForm struct {

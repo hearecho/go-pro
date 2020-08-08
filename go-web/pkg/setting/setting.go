@@ -67,8 +67,8 @@ func LoadDB(d *DataBase) {
 
 func LoadServer(server *Server) {
 	server.Port = viper.GetInt("server.port")
-	server.ReadTimeOut = viper.GetDuration("server.readTimeOut")
-	server.WriteTimeOut = viper.GetDuration("server.writeTimeOut")
+	server.ReadTimeOut = viper.GetDuration("server.readTimeOut") * time.Second
+	server.WriteTimeOut = viper.GetDuration("server.writeTimeOut") * time.Second
 }
 
 func LoadApp(app *App) {
@@ -82,6 +82,6 @@ func LoadApp(app *App) {
 	app.Log.TimeFormat = viper.GetString("app.log.timeFormat")
 	app.Image.PrefixUrl = viper.GetString("app.image.prefixUrl")
 	app.Image.SavePath = viper.GetString("app.image.savePath")
-	app.Image.MaxSize = viper.GetInt("app.image.maxSize")
+	app.Image.MaxSize = viper.GetInt("app.image.maxSize")* 1024 * 1024
 	app.Image.AllowExts = viper.GetStringSlice("app.image.allowExts")
 }

@@ -1,0 +1,2 @@
+[WARN][upload.go:17]2020/08/08 11:45:30 [multipart: NextPart: read tcp 127.0.0.1:8080->127.0.0.1:60170: i/o timeout]
+[DEBUG][tag.go:40]2020/08/08 12:14:13 [map[lists:[{{3 1595498771 1596200375 0} mode test3 test2 1}] total:1]]

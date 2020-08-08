@@ -3,7 +3,7 @@ app:
   log:
     savePath: "logs/"
     saveName: "log"
-    fileExt: "ext"
+    fileExt: "log"
     timeFormat: "20060102"
   image:
     prefixUrl: "http://127.0.0.1:8080"
