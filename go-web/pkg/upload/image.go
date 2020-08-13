@@ -76,4 +76,11 @@ func CheckImage(src string) error {
 	return nil
 }
 
+/**
+判断图片是否存在
+ */
+func CheckImageExist(src string) bool  {
+
+}
+
 

@@ -22,9 +22,9 @@ func GetExt(fileName string) string {
 	return path.Ext(fileName)
 }
 /**
-判断文件是否存在
+判断文件是否存在,存在返回false,不存在返回true
  */
-func CheckExist(src string) bool {
+func CheckNotExist(src string) bool {
 	_, err := os.Stat(src)
 
 	return os.IsNotExist(err)
@@ -41,7 +41,7 @@ func CheckPermission(src string) bool {
 
  */
 func IsNotExistMkDir(src string) error {
-	if notExist := CheckExist(src); notExist == true {
+	if notExist := CheckNotExist(src); notExist == true {
 		if err := MkDir(src); err != nil {
 			return err
 		}

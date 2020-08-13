@@ -21,6 +21,7 @@ func UploadImage(c *gin.Context) {
 	if image == nil {
 		r = r.SetStatus(resp.INVALID_PARAMS)
 	} else {
+		//ext := path.Ext(image.Filename)
 		imageName := upload.GetImageName(image.Filename)
 		fullPath := upload.GetImageFullPath()
 		savePath := upload.GetImagePath()
