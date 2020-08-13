@@ -8,7 +8,9 @@ import (
 	"github.com/hearecho/go-pro/go-web/pkg/resp"
 	"github.com/hearecho/go-pro/go-web/pkg/setting"
 	"github.com/hearecho/go-pro/go-web/pkg/utils"
+	"github.com/hearecho/go-pro/go-web/pkg/web"
 	"github.com/unknwon/com"
+	"net/http"
 )
 
 // @Summary 获取全部标签
@@ -31,11 +33,17 @@ func GetTags(c *gin.Context) {
 		state = com.StrTo(arg).MustInt()
 		maps["state"] = state
 	}
-	data["lists"] = models.GetTags(utils.GetPage(c), setting.PageSize, maps)
+	maps["deleted_on"] = 0
+	data["lists"] = models.GetTags(utils.GetPage(c), setting.AppSetting.PageSize, maps)
 	data["total"] = models.GetTagTotal(maps)
-	c.JSON(200, resp.R{}.Ok().SetPath(c.Request.URL.Path).SetData(data))
+	c.JSON(http.StatusOK, resp.R{}.Ok().SetPath(c.Request.URL.Path).SetData(data))
 }
 
+type AddTagForm struct {
+	Name      string `form:"name" valid:"Required;MaxSize(100)"`
+	CreatedBy string `form:"created_by" valid:"Required;MaxSize(100)"`
+	State     int    `form:"state" valid:"Range(0,1)"`
+}
 // @Summary 添加标签
 // @Produce  json
 // @Param name query string true "Name"
@@ -45,25 +53,19 @@ func GetTags(c *gin.Context) {
 // @Failure 500 {object} resp.R
 // @Router /api/v1/tags [post]
 func AddTag(c *gin.Context) {
-	name := c.Query("name")
-	state := com.StrTo(c.DefaultQuery("state", "0")).MustInt()
-	createdBy := c.Query("created_by")
-
-	valid := validation.Validation{}
-	valid.Required(name, "name").Message("名称不能为空")
-	valid.MaxSize(name, 100, "name").Message("名称最长为100字符")
-	valid.Required(createdBy, "created_by").Message("创建人不能为空")
-	valid.MaxSize(createdBy, 100, "created_by").Message("创建人最长为100字符")
-	valid.Range(state, 0, 1, "state").Message("状态只允许0或1")
-
+	var form AddTagForm
 	r := resp.R{}.SetPath(c.Request.URL.Path)
-	if ! valid.HasErrors() {
-		if ! models.ExitTagByName(name) {
-			r = r.Ok()
-			models.AddTag(name, state, createdBy)
-		} else {
-			r = r.SetStatus(resp.ERROR_EXIST_TAG)
-		}
+	httpCode,errCode := web.BindAndValid(c,&form)
+	if errCode != resp.SUCCESS {
+		r.SetStatus(errCode)
+		c.JSON(httpCode,r)
+		return
+	}
+	if !models.ExitTagByName(form.Name) {
+		r = r.Ok()
+		models.AddTag(form.Name,form.State,form.CreatedBy)
+	} else {
+		r = r.SetStatus(resp.ERROR_EXIST_TAG)
 	}
 	c.JSON(200, r)
 }

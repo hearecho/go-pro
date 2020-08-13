@@ -2,8 +2,6 @@ package models
 
 import (
 	"github.com/hearecho/go-pro/go-web/pkg/utils"
-	"github.com/jinzhu/gorm"
-	"time"
 )
 
 type Tag struct {
@@ -21,17 +19,6 @@ gorm所支持的回调方法：
 删除：BeforeDelete、AfterDelete
 查询：AfterFind
 */
-func (tag *Tag) BeforeCreate(scope *gorm.Scope) error {
-	scope.SetColumn("CreatedOn", time.Now().Unix())
-
-	return nil
-}
-
-func (tag *Tag) BeforeUpdate(scope *gorm.Scope) error {
-	scope.SetColumn("ModifiedOn", time.Now().Unix())
-
-	return nil
-}
 
 
 func GetTags(pageNum, pageSize int, maps interface{}) (tags []Tag) {
