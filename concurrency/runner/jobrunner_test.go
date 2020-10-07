@@ -10,7 +10,7 @@ import (
 
 func TestJobRunner(t *testing.T) {
 	fmt.Println("开始运行")
-	r := NewJobRunner(time.Second * 1)
+	r := NewJobRunner(time.Second * 5)
 	r.Add(createTask(),createTask(),createTask())
 	if err:= r.Start();err != nil {
 		switch err {
