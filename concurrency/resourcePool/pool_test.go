@@ -11,8 +11,8 @@ import (
 )
 
 const (
-	maxGoroutines = 5
-	poolResources = 2
+	maxGoroutines = 100
+	poolResources = 5
 )
 
 type dbConnection struct {
@@ -42,6 +42,7 @@ func Test_Pool(t *testing.T) {
 	for query := 0; query < maxGoroutines; query++ {
 		go func(q int) {
 			performQueries(q,p)
+			wg.Done()
 		}(query)
 	}
 	wg.Wait()
@@ -56,7 +57,7 @@ func performQueries(q int, p *Pool) {
 		return
 	}
 	defer p.Release(conn)
-	time.Sleep(time.Duration(rand.Intn(100))*time.Millisecond)
-	log.Printf("QID[%d] CID[%d]\n",q,conn.(*dbConnection).ID)
+	time.Sleep(time.Duration(rand.Intn(10))*time.Millisecond)
+	log.Printf("JobID[%d] ResourceID[%d]\n",q,conn.(*dbConnection).ID)
 }
 
